@@ -1,3 +1,19 @@
+'use strict';
+
+// HTML TEMPLATE
+(function(){
+    var carouselGallery = document.getElementById('carouselSlide').innerHTML;
+    
+    Mustache.parse(carouselGallery);
+    
+    var listGallery = '';
+    
+    for(var i = 0; i < dataSlides.length; i++) {
+        listGallery += Mustache.render(carouselGallery, dataSlides[i]);
+    } 
+    lolek.insertAdjacentHTML('beforeend', listGallery);
+})();
+
 // CAROUSEL
 var elem = document.querySelector('.main-carousel');
 var flkty = new Flickity( elem, {

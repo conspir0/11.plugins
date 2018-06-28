@@ -9,28 +9,56 @@
 </head>
 <body>
 <!--  CAROUSEL  -->
-    <div class="main-carousel">
-        <div class="carousel-cell" id="carousel-cell1" style="background-image: url('images/1.jpeg')"><div class="container">First Page</div></div>
-        <div class="carousel-cell" id="carousel-cell2" style="background-image: url('images/2.jpeg')"><div class="container">Second Page</div></div>
-        <div class="carousel-cell" id="carousel-cell3" style="background-image: url('images/3.jpeg')"><div class="container">Third Page</div></div>
-        <div class="carousel-cell" id="carousel-cell4" style="background-image: url('images/4.jpeg')"><div class="container">Fourth Page</div></div>
-        <div class="carousel-cell" id="carousel-cell5" style="background-image: url('images/5.jpeg')"><div class="container">Fifth Page</div></div>
-    </div>
+    <div class="main-carousel" id="lolek"></div>
+    
 <!--  PROGRESS BAR  -->
     <div class="progress-bar"></div>
+    
 <!--  BUTTON  -->
     <button class="button">RESET</button>
-<!--  LINKS  -->
-    <div class="links">
-        <a href="#carousel-cell1">View cell 1</a>
-        <a href="#carousel-cell2">View cell 2</a>
-        <a href="#carousel-cell3">View cell 3</a>
-        <a href="#carousel-cell4">View cell 4</a>
-        <a href="#carousel-cell5">View cell 5</a>        
-    </div>
-       
+    
+<!--  HTML TEMPLATE  -->
+    <script id="carouselSlide" type="x-tmpl-mustache">
+        <div class="carousel-cell">
+            <p>{{ title }}</p>
+            <p>{{{ description }}}</p>
+        </div>
+    </script>
+    
+<!--  DATA  -->
+    <script>
+        var dataSlides = [
+            {
+                image: '',
+                title: 'First Page',
+                description: '<p>Lorem ipsum.</p> <img src="images/1.jpeg"> <p>Dolor sit.</p>'
+            },
+            {
+                image: '',
+                title: 'Second Page',
+                description: '<p>Lorem ipsum.</p> <img src="images/2.jpeg"> <p>Dolor sit.</p>'
+            },
+            {
+                image: '',
+                title: 'Third Page',
+                description: '<p>Lorem ipsum.</p> <img src="images/3.jpeg"> <p>Dolor sit.</p>'
+            },
+            {
+                image: '',
+                title: 'Fourth Page',
+                description: '<p>Lorem ipsum.</p> <img src="images/4.jpeg"> <p>Dolor sit.</p>'
+            },
+            {
+                image: '',
+                title: 'Fifth Page',
+                description: '<p>Lorem ipsum.</p> <img src="images/5.jpeg"> <p>Dolor sit.</p>'
+            },
+
+        ];
+    </script>
     <script src="vendor/flickity.pkgd.min.js"></script>
     <script src="vendor/hash.js"></script>
+    <script src="vendor/mustache.min.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>
