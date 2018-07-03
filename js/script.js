@@ -1,14 +1,14 @@
 'use strict';
 
 // HTML TEMPLATE
-(function(){
+(function () {
     var carouselGallery = document.getElementById('carouselSlide').innerHTML;
     
     Mustache.parse(carouselGallery);
     
     var listGallery = '';
     
-    for(var i = 0; i < dataSlides.length; i++) {
+    for (var i = 0; i < dataSlides.length; i++) {
         listGallery += Mustache.render(carouselGallery, dataSlides[i]);
     } 
     lolek.insertAdjacentHTML('beforeend', listGallery);
@@ -35,3 +35,24 @@ var progressBar = document.querySelector('.progress-bar');
         progress = Math.max( 0, Math.min( 1, progress ) );
         progressBar.style.width = progress * 100 + '%';
     });
+
+// MAP
+var info = document.getElementById('info');
+
+window.initMap = function() {
+	
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 10,
+		center: dataSlides[0].coords
+    });
+
+	for (let i=0; i <dataSlides.length; i++ ){
+		var marker = new google.maps.Marker({
+			position: dataSlides[i].coords,
+			map: map
+		})
+		marker.addListener('click', function(){
+			info.innerHTML = 'You clicked marker: '+ dataSlides[i].title;
+		})
+	}
+}
