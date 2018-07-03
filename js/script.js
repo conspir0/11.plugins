@@ -24,11 +24,13 @@ var flkty = new Flickity( elem, {
     pageDots: false,
     hash: true
 });
+
 // BUTTON
 var button = document.querySelector('.button');
     button.addEventListener( 'click', function( event ) {
         flkty.selectCell( 0 );
     });
+
 // PROGRESS BAR
 var progressBar = document.querySelector('.progress-bar');
     flkty.on( 'scroll', function( progress ) {
@@ -46,13 +48,13 @@ window.initMap = function() {
 		center: dataSlides[0].coords
     });
 
-	for (let i=0; i <dataSlides.length; i++ ){
+	for (let i=0; i < dataSlides.length; i++ ){
 		var marker = new google.maps.Marker({
 			position: dataSlides[i].coords,
 			map: map
 		})
-		marker.addListener('click', function(){
-			info.innerHTML = 'You clicked marker: '+ dataSlides[i].title;
-		})
+    	marker.addListener('click', function(){
+			flkty.selectCell(i);
+        })
 	}
 }
