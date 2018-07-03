@@ -33,10 +33,11 @@ var button = document.querySelector('.button');
 
 // PROGRESS BAR
 var progressBar = document.querySelector('.progress-bar');
-    flkty.on( 'scroll', function( progress ) {
-        progress = Math.max( 0, Math.min( 1, progress ) );
-        progressBar.style.width = progress * 100 + '%';
-    });
+
+flkty.on( 'scroll', function( progress ) {
+    progress = Math.max( 0, Math.min( 1, progress ) );
+    progressBar.style.width = progress * 100 + '%';
+});
 
 // MAP
 var info = document.getElementById('info');
@@ -57,4 +58,8 @@ window.initMap = function() {
 			flkty.selectCell(i);
         })
 	}
+    flkty.on( 'change', function( index ) {
+        map.panTo(dataSlides[index].coords); 
+        map.setZoom(11);
+    });
 }
